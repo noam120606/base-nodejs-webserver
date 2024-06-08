@@ -33,7 +33,7 @@ io.on('connection', (socket) => {
 
     nonAuthFiles.forEach(({ name, execute }) => socket.on(name, execute.bind(null, socket)));
 
-    if (!socket.request.session.auth) return socket.emit('error', {type: "Websocked", body: "Unauthorized"});
+    if (!socket.request.session.auth) return socket.emit('error', {type: "Websocket", body: "Unauthorized"});
 
     const authFiles = fs.readdirSync("./socket_handler")
         .filter(f => f.endsWith(".js") && !f.startsWith("-") && f.requireAuth)
